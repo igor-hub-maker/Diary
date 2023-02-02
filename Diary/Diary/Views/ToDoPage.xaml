@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Diary.Views.ToDoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <StackLayout>
+        <Label
+            Margin="36,34,0,21"
+            FontFamily="MontserratBold"
+            FontSize="32"
+            Text="{Binding PageTitle}"
+            TextColor="#9CABC8" />
+        <Frame
+            BackgroundColor="#434650"
+            CornerRadius="36"
+            HeightRequest="458"
+            HorizontalOptions="Center"
+            WidthRequest="290">
+            <Grid>
+                <Label
+                    FontFamily="MontserratBold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    Text="{Binding WeekDay}" />
+                <ListView
+                    Margin="20,57,20,0"
+                    ItemsSource="{Binding Notes}"
+                    RowHeight="80"
+                    SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    Margin="0,5,0,5"
+                                    BackgroundColor="#9CABC8"
+                                    CornerRadius="36">
+                                    <Grid>
+                                        <Label
+                                            HorizontalOptions="Start"
+                                            Text="{Binding Title}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            HorizontalOptions="End"
+                                            Text="{Binding Time}"
+                                            TextColor="#434650"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ImageButton
+                    Margin="0,0,20,23"
+                    BackgroundColor="Transparent"
+                    Command="{Binding NewNoteCommand}"
+                    HorizontalOptions="End"
+                    Source="PlusImageButton.png"
+                    VerticalOptions="End" />
+            </Grid>
+        </Frame>
+        <Frame
+            BackgroundColor="#434650"
+            HeightRequest="75"
+            VerticalOptions="EndAndExpand">
+            <Grid>
+                <Button
+                    Margin="35,0"
+                    Padding="0,0,0,1"
+                    BackgroundColor="#9CABC8"
+                    Command="{Binding OpenPlanerPageCommand}"
+                    CornerRadius="25"
+                    FontSize="20"
+                    HeightRequest="37"
+                    HorizontalOptions="Start"
+                    Text="Planer"
+                    TextColor="#FFFFFF"
+                    TextTransform="None"
+                    VerticalOptions="Center"
+                    WidthRequest="88" />
+                <Label
+                    Margin="35,0"
+                    FontSize="20"
+                    HorizontalOptions="End"
+                    Text="To Do"
+                    TextColor="#9CABC8"
+                    VerticalOptions="Center" />
+            </Grid>
+        </Frame>
+    </StackLayout>
+</ContentPage>

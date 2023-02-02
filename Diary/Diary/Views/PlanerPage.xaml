@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Diary.Views.PlanerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:controls="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
+    xmlns:local="clr-namespace:Diary.ViewModels"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="36,34,0,21"
+                FontFamily="MontserratBold"
+                FontSize="32"
+                Text="{Binding PageTitle}"
+                TextColor="#9CABC8" />
+            <Frame
+                BackgroundColor="#434650"
+                CornerRadius="36"
+                HeightRequest="335"
+                HorizontalOptions="Center"
+                WidthRequest="290">
+                <Grid>
+                    <controls:Calendar
+                        Culture="{Binding Culture}"
+                        DayTappedCommand="{Binding SelectedDateCommand}"
+                        DayViewSize="33"
+                        DisabledDayColor="#FFFFFF"
+                        FooterArrowVisible="False"
+                        FooterSectionVisible="False"
+                        HeaderSectionVisible="False"
+                        Month="{Binding Mounth}"
+                        SelectedDate="{Binding SelectedDate}"
+                        SwipeUpToHideEnabled="False"
+                        TodayFillColor="#FFFFFF"
+                        TodayOutlineColor="#FFFFFF"
+                        TodayTextColor="#434650" />
+                </Grid>
+            </Frame>
+            <Frame
+                Margin="21,21"
+                BackgroundColor="#434650"
+                CornerRadius="36"
+                HeightRequest="102"
+                HorizontalOptions="Center"
+                WidthRequest="290">
+                <StackLayout>
+                    <Label
+                        Margin="0,22,0,0"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="Today Tasks:" />
+                    <Label
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="{Binding TodayNotesCount}" />
+                </StackLayout>
+            </Frame>
+            <Frame BackgroundColor="#434650" HeightRequest="75">
+                <Grid>
+                    <Button
+                        Margin="35,0"
+                        Padding="0,0,0,1"
+                        BackgroundColor="#9CABC8"
+                        Command="{Binding OpenToDoPageCommand}"
+                        CornerRadius="25"
+                        FontSize="20"
+                        HeightRequest="37"
+                        HorizontalOptions="End"
+                        Text="To Do"
+                        TextColor="#FFFFFF"
+                        TextTransform="None"
+                        VerticalOptions="Center"
+                        WidthRequest="88" />
+                    <Label
+                        Margin="35,0"
+                        FontSize="20"
+                        HorizontalOptions="Start"
+                        Text="Planer"
+                        TextColor="#9CABC8"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

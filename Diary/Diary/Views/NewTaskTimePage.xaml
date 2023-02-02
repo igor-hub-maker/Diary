@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Diary.Views.NewTaskTimePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="36,34,0,21"
+                FontFamily="MontserratBold"
+                FontSize="32"
+                Text="New Task"
+                TextColor="#9CABC8" />
+            <Frame
+                Margin="0,21"
+                BackgroundColor="#434650"
+                CornerRadius="36"
+                HeightRequest="458"
+                HorizontalOptions="Center"
+                WidthRequest="290">
+                <StackLayout>
+                    <Label
+                        FontFamily="MontserratBold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="Set:" />
+                    <Frame
+                        BackgroundColor="#9CABC8"
+                        CornerRadius="36"
+                        HeightRequest="378"
+                        HorizontalOptions="Center"
+                        WidthRequest="251">
+                        <StackLayout>
+                            <Label
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Time" />
+                            <Frame
+                                Padding="6,0,6,0"
+                                BackgroundColor="#434650"
+                                CornerRadius="36"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                WidthRequest="202">
+                                <TimePicker Time="{Binding SelectedTime}" />
+                            </Frame>
+                            <Label
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Date" />
+                            <Frame
+                                Padding="6,0,6,0"
+                                BackgroundColor="#434650"
+                                CornerRadius="36"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                WidthRequest="202">
+                                <DatePicker Date="{Binding SelectedDate}" />
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+            <Frame
+                BackgroundColor="#434650"
+                HeightRequest="75"
+                VerticalOptions="EndAndExpand">
+                <Grid>
+                    <Button
+                        Margin="35,0"
+                        Padding="0,0,0,1"
+                        BackgroundColor="#9CABC8"
+                        Command="{Binding ReturnCommand}"
+                        CornerRadius="25"
+                        FontSize="20"
+                        HeightRequest="37"
+                        HorizontalOptions="Start"
+                        Text="Return"
+                        TextColor="#FFFFFF"
+                        TextTransform="None"
+                        VerticalOptions="Center"
+                        WidthRequest="88" />
+                    <Button
+                        Margin="35,0"
+                        Padding="0,0,0,1"
+                        BackgroundColor="#9CABC8"
+                        Command="{Binding SaveTaskCommand}"
+                        CornerRadius="25"
+                        FontSize="20"
+                        HeightRequest="37"
+                        HorizontalOptions="End"
+                        Text="Save"
+                        TextColor="#FFFFFF"
+                        TextTransform="None"
+                        VerticalOptions="Center"
+                        WidthRequest="88" />
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
