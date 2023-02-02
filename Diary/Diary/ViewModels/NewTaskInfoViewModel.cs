@@ -17,8 +17,8 @@ namespace Diary.ViewModels
             taskDate = date;
         }
 
-        public ICommand OpenToDoPageCommand { protected set; get; }
-        public ICommand NewTaskContinueCommand { protected set; get; }
+        public ICommand OpenToDoPageCommand { get; }
+        public ICommand NewTaskContinueCommand { get; }
 
         private string noteTitle;
         public string NoteTitle
