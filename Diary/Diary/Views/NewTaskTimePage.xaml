@@ -4,7 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#1B1B1B">
             <Label
                 Margin="36,34,0,21"
                 FontFamily="MontserratBold"
@@ -12,36 +12,33 @@
                 Text="New Task"
                 TextColor="#9CABC8" />
             <Frame
-                Margin="0,21"
+                Margin="20,21"
                 BackgroundColor="#434650"
                 CornerRadius="36"
-                HeightRequest="458"
-                HorizontalOptions="Center"
-                WidthRequest="290">
+                HeightRequest="458">
                 <StackLayout>
                     <Label
+                        Margin="0,0,0,10"
                         FontFamily="MontserratBold"
                         FontSize="20"
                         HorizontalOptions="Center"
                         Text="Set:" />
                     <Frame
+                        Margin="10,0"
                         BackgroundColor="#9CABC8"
                         CornerRadius="36"
-                        HeightRequest="378"
-                        HorizontalOptions="Center"
-                        WidthRequest="251">
+                        HeightRequest="378">
                         <StackLayout>
                             <Label
                                 FontSize="20"
                                 HorizontalOptions="Center"
                                 Text="Time" />
                             <Frame
+                                Margin="8,0"
                                 Padding="6,0,6,0"
                                 BackgroundColor="#434650"
                                 CornerRadius="36"
-                                HeightRequest="40"
-                                HorizontalOptions="Center"
-                                WidthRequest="202">
+                                HeightRequest="40">
                                 <TimePicker Time="{Binding SelectedTime}" />
                             </Frame>
                             <Label
@@ -49,12 +46,11 @@
                                 HorizontalOptions="Center"
                                 Text="Date" />
                             <Frame
+                                Margin="8,0"
                                 Padding="6,0,6,0"
                                 BackgroundColor="#434650"
                                 CornerRadius="36"
-                                HeightRequest="40"
-                                HorizontalOptions="Center"
-                                WidthRequest="202">
+                                HeightRequest="40">
                                 <DatePicker Date="{Binding SelectedDate}" />
                             </Frame>
                         </StackLayout>
@@ -84,7 +80,7 @@
                         Margin="35,0"
                         Padding="0,0,0,1"
                         BackgroundColor="#9CABC8"
-                        Command="{Binding SaveTaskCommand}"
+                        Command="{Binding SaveNoteCommand}"
                         CornerRadius="25"
                         FontSize="20"
                         HeightRequest="37"

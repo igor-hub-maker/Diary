@@ -3,7 +3,7 @@
     x:Class="Diary.Views.NewTaskInfoPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <StackLayout>
+    <StackLayout BackgroundColor="#1B1B1B">
         <Label
             Margin="36,34,0,21"
             FontFamily="MontserratBold"
@@ -11,24 +11,22 @@
             Text="New Task"
             TextColor="#9CABC8" />
         <Frame
-            Margin="0,21"
+            Margin="20,21"
             BackgroundColor="#434650"
             CornerRadius="36"
-            HeightRequest="458"
-            HorizontalOptions="Center"
-            WidthRequest="290">
+            Padding="0">
             <StackLayout>
                 <Label
+                    Margin="0,20,0,0"
                     FontFamily="MontserratBold"
                     FontSize="20"
                     HorizontalOptions="Center"
                     Text="Fill:" />
                 <Frame
+                    Margin="19,9,19,23"
                     BackgroundColor="#9CABC8"
                     CornerRadius="36"
-                    HeightRequest="378"
-                    HorizontalOptions="Center"
-                    WidthRequest="251">
+                    HeightRequest="378">
                     <StackLayout>
                         <Label
                             FontSize="20"
@@ -40,7 +38,7 @@
                             CornerRadius="16"
                             HeightRequest="35"
                             IsClippedToBounds="true"
-                            WidthRequest="202">
+                            Margin="9,0">
                             <Entry
                                 FontSize="14"
                                 MaxLength="15"
@@ -57,7 +55,7 @@
                             CornerRadius="36"
                             IsClippedToBounds="true"
                             VerticalOptions="FillAndExpand"
-                            WidthRequest="202">
+                            Margin="9,0">
                             <Editor
                                 FontSize="14"
                                 Keyboard="Text"

@@ -3,7 +3,7 @@
     x:Class="Diary.Views.ToDoPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <StackLayout>
+    <StackLayout BackgroundColor="#1B1B1B">
         <Label
             Margin="36,34,0,21"
             FontFamily="MontserratBold"
@@ -11,11 +11,10 @@
             Text="{Binding PageTitle}"
             TextColor="#9CABC8" />
         <Frame
+            Margin="35,0,35,10"
             BackgroundColor="#434650"
             CornerRadius="36"
-            HeightRequest="458"
-            HorizontalOptions="Center"
-            WidthRequest="290">
+            HeightRequest="458">
             <Grid>
                 <Label
                     FontFamily="MontserratBold"
@@ -26,7 +25,8 @@
                     Margin="20,57,20,0"
                     ItemsSource="{Binding Notes}"
                     RowHeight="80"
-                    SelectionMode="None">
+                    SelectedItem="{Binding SelectedNote}"
+                    SelectionMode="Single">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

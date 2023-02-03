@@ -8,7 +8,7 @@
     xmlns:local="clr-namespace:Diary.ViewModels"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#1B1B1B">
             <Label
                 Margin="36,34,0,21"
                 FontFamily="MontserratBold"
@@ -16,17 +16,18 @@
                 Text="{Binding PageTitle}"
                 TextColor="#9CABC8" />
             <Frame
+                Margin="34,0"
                 BackgroundColor="#434650"
                 CornerRadius="36"
-                HeightRequest="335"
-                HorizontalOptions="Center"
-                WidthRequest="290">
+                HorizontalOptions="Center">
                 <Grid>
                     <controls:Calendar
                         Culture="{Binding Culture}"
                         DayTappedCommand="{Binding SelectedDateCommand}"
                         DayViewSize="33"
-                        DisabledDayColor="#FFFFFF"
+                        DaysTitleColor="#FFFFFF"
+                        DeselectedDayTextColor="White"
+                        DisabledDayColor="Transparent"
                         FooterArrowVisible="False"
                         FooterSectionVisible="False"
                         HeaderSectionVisible="False"
@@ -39,12 +40,11 @@
                 </Grid>
             </Frame>
             <Frame
-                Margin="21,21"
+                Margin="35,15"
                 BackgroundColor="#434650"
                 CornerRadius="36"
                 HeightRequest="102"
-                HorizontalOptions="Center"
-                WidthRequest="290">
+                HorizontalOptions="Fill" MinimumHeightRequest="0">
                 <StackLayout>
                     <Label
                         Margin="0,22,0,0"
@@ -57,7 +57,10 @@
                         Text="{Binding TodayNotesCount}" />
                 </StackLayout>
             </Frame>
-            <Frame BackgroundColor="#434650" HeightRequest="75">
+            <Frame
+                BackgroundColor="#434650"
+                HeightRequest="75"
+                VerticalOptions="EndAndExpand">
                 <Grid>
                     <Button
                         Margin="35,0"

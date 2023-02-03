@@ -11,6 +11,7 @@
             <Style TargetType="ContentPage">
                 <Setter Property="BackgroundColor" Value="#1E1E1E" />
             </Style>
+
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="Montserrat" />
                 <Setter Property="FontSize" Value="20" />

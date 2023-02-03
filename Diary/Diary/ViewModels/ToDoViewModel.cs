@@ -12,6 +12,7 @@ namespace Diary.ViewModels
     {
         public ToDoViewModel(DateTime date)
         {
+            //NoteSelectedCommand = new Command(NoteSelected);
             NewNoteCommand = new Command(NewNote);
             OpenPlanerPageCommand = new Command(OpenPlanerPage);
             PageDate = date;
@@ -22,9 +23,23 @@ namespace Diary.ViewModels
 
         private DateTime PageDate;
 
+        public ICommand NoteSelectedCommand { get; }
         public ICommand OpenPlanerPageCommand { get; }
         public ICommand NewNoteCommand { get; }
 
+        private Note selectedNote;
+        public Note SelectedNote
+        {
+            get => selectedNote;
+            set
+            {
+                if (value != null)
+                {
+                    SetProperty(ref selectedNote,value);
+                    NoteSelected();
+                }
+            }
+        }
         private List<Note> notes;
         public List<Note> Notes
         {
@@ -53,6 +68,10 @@ namespace Diary.ViewModels
             }
         }
 
+        public void NoteSelected()
+        {
+            App.Current.MainPage = new NoteDescriptionPage(SelectedNote);
+        }
         public void OpenPlanerPage()
         {
             App.Current.MainPage = new PlanerPage();

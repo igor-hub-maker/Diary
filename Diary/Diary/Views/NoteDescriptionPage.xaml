@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Diary.Views.NoteDescriptionPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#1B1B1B">
+            <Label
+                Margin="36,34,0,21"
+                FontFamily="MontserratBold"
+                FontSize="32"
+                Text="Task"
+                TextColor="#9CABC8" />
+            <Frame
+                Margin="35,0,35,10"
+                BackgroundColor="#434650"
+                CornerRadius="36"
+                HeightRequest="458">
+                <Grid>
+                    <Label
+                        FontFamily="MontserratBold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="{Binding NoteTitle}" />
+                    <Frame
+                        Margin="10,57,10,15"
+                        BackgroundColor="#9CABC8"
+                        CornerRadius="36" >
+                        <Grid>
+                            <Label Text="Time:" Margin="10,15"/>
+                            <Label Text="{Binding Time}" Margin="10,15" HorizontalOptions="End" TextColor="#434650"/>
+                            <Label Text="Date:" Margin="10,50"/>
+                            <Label Text="{Binding Date}" Margin="10,50" HorizontalOptions="End" TextColor="#434650"/>
+                            <Label Text="Description:" Margin="10,100"/>
+                            <Label Text="{Binding Description}" Margin="10,140" TextColor="#434650"/>
+                        </Grid>
+                    </Frame>
+                    <ImageButton
+                        Margin="0,0,20,23"
+                        BackgroundColor="Transparent"
+                        Command="{Binding EditNoteCommand}"
+                        HorizontalOptions="End"
+                        Source="EditImageButton.png"
+                        VerticalOptions="End" />
+                </Grid>
+            </Frame>
+            <Frame
+                BackgroundColor="#434650"
+                HeightRequest="75"
+                VerticalOptions="EndAndExpand">
+                <Grid>
+                    <Button
+                        Margin="35,0"
+                        Padding="0,0,0,1"
+                        BackgroundColor="#9CABC8"
+                        Command="{Binding GoBackCommand}"
+                        CornerRadius="25"
+                        FontSize="20"
+                        HeightRequest="37"
+                        HorizontalOptions="Center"
+                        Text="Go Back"
+                        TextColor="#FFFFFF"
+                        TextTransform="None"
+                        VerticalOptions="Center"
+                        WidthRequest="88" />
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
