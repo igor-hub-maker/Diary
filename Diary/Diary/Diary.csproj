@@ -29,11 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\NewTaskInfoPage.xaml.cs">
-      <DependentUpon>NewTaskInfoPage.xaml</DependentUpon>
+    <Compile Update="Views\NewNoteInfoPage.xaml.cs">
+      <DependentUpon>NewNoteInfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\NewTaskTimePage.xaml.cs">
-      <DependentUpon>NewTaskTimePage.xaml</DependentUpon>
+    <Compile Update="Views\NewNoteTimePage.xaml.cs">
+      <DependentUpon>NewNoteTimePage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\PlanerPage.xaml.cs">
       <DependentUpon>PlanerPage.xaml</DependentUpon>
@@ -41,10 +41,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\NewTaskInfoPage.xaml">
+    <EmbeddedResource Update="Views\EditNoteInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewTaskTimePage.xaml">
+    <EmbeddedResource Update="Views\EditNoteTimePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewNoteInfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewNoteTimePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NoteDescriptionPage.xaml">

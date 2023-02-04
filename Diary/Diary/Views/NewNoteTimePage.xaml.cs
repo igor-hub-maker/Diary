@@ -5,12 +5,12 @@ using Xamarin.Forms;
 
 namespace Diary.Views
 {
-    public partial class NewTaskTimePage : ContentPage
+    public partial class NewNoteTimePage : ContentPage
     {
-        public NewTaskTimePage(Note task)
+        public NewNoteTimePage(Note task)
         {
             InitializeComponent();
-            BindingContext = new NewTaskTimeViewModel(task);
+            BindingContext = new NewNoteTimeViewModel(task);
         }
     }
 }

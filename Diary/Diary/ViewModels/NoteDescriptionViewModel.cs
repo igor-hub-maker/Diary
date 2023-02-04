@@ -19,10 +19,10 @@ namespace Diary.ViewModels
             Time = note.Time;
             Date = $"{note.Date.Day} // {note.Date.Month}";
             Description = note.Description;
-            Note = note;
+            this.note = note;
         }
 
-        private Note Note;
+        private Note note;
 
         public ICommand EditNoteCommand { get; }
         public ICommand GoBackCommand { get; }
@@ -54,11 +54,11 @@ namespace Diary.ViewModels
 
         private void EditNote()
         {
-
+            App.Current.MainPage = new EditNoteInfoPage(note);
         }
         private void GoBack()
         {
-            App.Current.MainPage = new ToDoPage(Note.Date);
+            App.Current.MainPage = new ToDoPage(note.Date);
         }
     }
 }

@@ -79,7 +79,7 @@ namespace Diary.ViewModels
 
         public void NewNote()
         {
-            App.Current.MainPage = new NewTaskInfoPage(PageDate);
+            App.Current.MainPage = new NewNoteInfoPage(PageDate);
         }
     }
 }

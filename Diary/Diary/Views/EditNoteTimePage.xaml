@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Diary.Views.EditNoteTimePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#1B1B1B">
+            <Label
+                Margin="36,34,0,21"
+                FontFamily="MontserratBold"
+                FontSize="32"
+                Text="Edit Task"
+                TextColor="#9CABC8" />
+            <Frame
+                Margin="20,21"
+                BackgroundColor="#434650"
+                CornerRadius="36"
+                HeightRequest="458">
+                <StackLayout>
+                    <Label
+                        Margin="0,0,0,10"
+                        FontFamily="MontserratBold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="Set:" />
+                    <Frame
+                        Margin="10,0"
+                        BackgroundColor="#9CABC8"
+                        CornerRadius="36"
+                        HeightRequest="378">
+                        <StackLayout>
+                            <Label
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Time" />
+                            <Frame
+                                Margin="8,0"
+                                Padding="6,0,6,0"
+                                BackgroundColor="#434650"
+                                CornerRadius="36"
+                                HeightRequest="40">
+                                <TimePicker Time="{Binding SelectedTime}" />
+                            </Frame>
+                            <Label
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Date" />
+                            <Frame
+                                Margin="8,0"
+                                Padding="6,0,6,0"
+                                BackgroundColor="#434650"
+                                CornerRadius="36"
+                                HeightRequest="40">
+                                <DatePicker Date="{Binding SelectedDate}" />
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+            <Frame
+                BackgroundColor="#434650"
+                HeightRequest="75"
+                VerticalOptions="EndAndExpand">
+                <Grid>
+                    <Button
+                        Margin="35,0"
+                        Padding="0,0,0,1"
+                        BackgroundColor="#9CABC8"
+                        Command="{Binding ReturnCommand}"
+                        CornerRadius="25"
+                        FontSize="20"
+                        HeightRequest="37"
+                        HorizontalOptions="Start"
+                        Text="Return"
+                        TextColor="#FFFFFF"
+                        TextTransform="None"
+                        VerticalOptions="Center"
+                        WidthRequest="88" />
+                    <Button
+                        Margin="35,0"
+                        Padding="0,0,0,1"
+                        BackgroundColor="#9CABC8"
+                        Command="{Binding SaveNoteCommand}"
+                        CornerRadius="25"
+                        FontSize="20"
+                        HeightRequest="37"
+                        HorizontalOptions="End"
+                        Text="Save"
+                        TextColor="#FFFFFF"
+                        TextTransform="None"
+                        VerticalOptions="Center"
+                        WidthRequest="88" />
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -22,7 +22,7 @@
                     HorizontalOptions="Center"
                     Text="{Binding WeekDay}" />
                 <ListView
-                    Margin="20,57,20,0"
+                    Margin="5,57,5,0"
                     ItemsSource="{Binding Notes}"
                     RowHeight="80"
                     SelectedItem="{Binding SelectedNote}"

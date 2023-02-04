@@ -7,15 +7,16 @@ using Xamarin.Forms;
 
 namespace Diary.ViewModels
 {
-    public class NewTaskTimeViewModel : BaseViewModel
+    public class NewNoteTimeViewModel : BaseViewModel
     {
-        public NewTaskTimeViewModel(Note note)
+        public NewNoteTimeViewModel(Note note)
         {
+            SaveNoteCommand = new Command(SaveNote);
+            ReturnCommand = new Command(Return);
 
             NewNote = note;
+            SelectedTime = DateTime.Now.TimeOfDay;
             SelectedDate = NewNote.Date;
-            SaveNoteCommand = new Command(SaveTask);
-            ReturnCommand = new Command(Return);
         }
 
         private Note NewNote;
@@ -37,17 +38,17 @@ namespace Diary.ViewModels
             set => SetProperty(ref selectedDate, value);
         }
 
-        public void SaveTask()
+        public void SaveNote()
         {
             NewNote.Date = SelectedDate.Add(SelectedTime);
             NewNote.Time = $"{selectedTime.Hours}:{selectedTime.Minutes}";
-            NoteSerelizer.SerelizeNote(NewNote.Date, NewNote);
+            NoteSerelizer.SerelizeNote(NewNote);
             App.Current.MainPage = new PlanerPage();
         }
 
         public void Return()
         {
-            App.Current.MainPage = new NewTaskInfoPage(NewNote.Date);
+            App.Current.MainPage = new NewNoteInfoPage(NewNote.Date);
         }
     }
 }

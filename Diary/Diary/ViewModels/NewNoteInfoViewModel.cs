@@ -6,11 +6,11 @@ using Xamarin.Forms;
 
 namespace Diary.ViewModels
 {
-    public class NewTaskInfoViewModel : BaseViewModel
+    public class NewNoteInfoViewModel : BaseViewModel
     {
         private DateTime taskDate;
 
-        public NewTaskInfoViewModel(DateTime date)
+        public NewNoteInfoViewModel(DateTime date)
         {
             NewTaskContinueCommand = new Command(NewNoteContinue);
             OpenToDoPageCommand = new Command(OpenToDoPage);
@@ -53,7 +53,7 @@ namespace Diary.ViewModels
             note.Date = taskDate;
             note.Title = NoteTitle;
             note.Description = NoteDescription;
-            App.Current.MainPage = new NewTaskTimePage(note);
+            App.Current.MainPage = new NewNoteTimePage(note);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
-    x:Class="Diary.Views.NewTaskInfoPage"
+    x:Class="Diary.Views.NewNoteInfoPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <StackLayout BackgroundColor="#1B1B1B">
@@ -12,9 +12,9 @@
             TextColor="#9CABC8" />
         <Frame
             Margin="20,21"
+            Padding="0"
             BackgroundColor="#434650"
-            CornerRadius="36"
-            Padding="0">
+            CornerRadius="36">
             <StackLayout>
                 <Label
                     Margin="0,20,0,0"
@@ -33,15 +33,15 @@
                             HorizontalOptions="Center"
                             Text="Title:" />
                         <Frame
+                            Margin="9,0"
                             Padding="4,0"
                             BackgroundColor="#434650"
                             CornerRadius="16"
                             HeightRequest="35"
-                            IsClippedToBounds="true"
-                            Margin="9,0">
+                            IsClippedToBounds="true">
                             <Entry
                                 FontSize="14"
-                                MaxLength="15"
+                                MaxLength="13"
                                 Placeholder="Enter here..."
                                 Text="{Binding NoteTitle}" />
                         </Frame>
@@ -50,12 +50,12 @@
                             HorizontalOptions="Center"
                             Text="Description:" />
                         <Frame
+                            Margin="9,0"
                             Padding="10,0"
                             BackgroundColor="#434650"
                             CornerRadius="36"
                             IsClippedToBounds="true"
-                            VerticalOptions="FillAndExpand"
-                            Margin="9,0">
+                            VerticalOptions="FillAndExpand">
                             <Editor
                                 FontSize="14"
                                 Keyboard="Text"
