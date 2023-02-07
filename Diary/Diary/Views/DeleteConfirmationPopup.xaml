@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="Diary.Views.DeleteConfirmationPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Size="216,280"
+    Color="Transparent">
+    <xct:Popup.Content>
+        <Frame BackgroundColor="#434650" CornerRadius="36">
+            <StackLayout BackgroundColor="#434650">
+                <Label
+                    Margin="30"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Delete this task?" />
+                <Button
+                    BackgroundColor="#FA8282"
+                    Clicked="Button_Yes"
+                    CornerRadius="25"
+                    HorizontalOptions="Center"
+                    Text="Yes" />
+                <Button
+                    Margin="0,18"
+                    BackgroundColor="#9CABC8"
+                    Clicked="Button_No"
+                    CornerRadius="25"
+                    HorizontalOptions="Center"
+                    Text="No" />
+            </StackLayout>
+        </Frame>
+    </xct:Popup.Content>
+</xct:Popup>

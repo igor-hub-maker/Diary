@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="Diary.Views.TitleNotFilledPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Size="216,200"
+    Color="Transparent">
+    <Frame BackgroundColor="#434650" CornerRadius="36">
+        <StackLayout BackgroundColor="#434650">
+            <Label
+                Margin="30,15,30,20"
+                FontSize="20"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="The 'Title' must be filled!" />
+            <Button
+                BackgroundColor="#9CABC8"
+                Clicked="Button_Clicked"
+                CornerRadius="36"
+                HorizontalOptions="Center"
+                Text="Ok" />
+        </StackLayout>
+    </Frame>
+</xct:Popup>

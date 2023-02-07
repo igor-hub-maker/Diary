@@ -1,8 +1,7 @@
 ﻿using Diary.Models;
+using Diary.Services;
 using Diary.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -12,8 +11,8 @@ namespace Diary.ViewModels
     {
         public NoteDescriptionViewModel(Note note)
         {
-            EditNoteCommand = new Command(EditNote);
-            GoBackCommand = new Command(GoBack);
+            EditNoteCommand = new Command(()=>EditNote());
+            GoBackCommand = new Command(()=>GoBack());
 
             NoteTitle = note.Title;
             Time = note.Time;
@@ -29,9 +28,9 @@ namespace Diary.ViewModels
 
         private string noteTitle;
         public string NoteTitle
-        { 
+        {
             get => noteTitle;
-            set => SetProperty(ref noteTitle,value);
+            set => SetProperty(ref noteTitle, value);
         }
         private string time;
         public string Time
@@ -52,13 +51,13 @@ namespace Diary.ViewModels
             set => SetProperty(ref description, value);
         }
 
-        private void EditNote()
+        private async Task EditNote()
         {
-            App.Current.MainPage = new EditNoteInfoPage(note);
+            await NavigationDispatcher.Instance.Navigation.PushAsync(new EditNoteInfoPage(note));
         }
-        private void GoBack()
+        private async Task GoBack()
         {
-            App.Current.MainPage = new ToDoPage(note.Date);
+            await NavigationDispatcher.Instance.Navigation.PopAsync();
         }
     }
 }

@@ -89,7 +89,7 @@
                     Margin="35,0"
                     Padding="0"
                     BackgroundColor="#9CABC8"
-                    Command="{Binding OpenToDoPageCommand}"
+                    Command="{Binding CancelCommand}"
                     CornerRadius="25"
                     FontSize="20"
                     HeightRequest="37"

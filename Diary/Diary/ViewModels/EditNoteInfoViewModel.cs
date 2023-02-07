@@ -1,26 +1,26 @@
 ﻿using Diary.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
-using System.Windows.Input;
-using Diary.Views;
 using Diary.Services;
+using Diary.Views;
+using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.Forms;
 
 namespace Diary.ViewModels
 {
-    class EditNoteInfoViewModel: BaseViewModel
+    class EditNoteInfoViewModel : BaseViewModel
     {
         public EditNoteInfoViewModel(Note note)
         {
-            CancelCommand = new Command(Cancel);
-            NextCommand =   new Command(Next);
-            DelNoteCommand = new Command(DeleteNote);
+            CancelCommand = new Command(()=>Cancel());
+            NextCommand = new Command(()=>Next());
+            DelNoteCommand = new Command(()=>DeleteNote());
 
             oldNote = note;
             newNote = new Note();
             newNote.Time = note.Time;
-            newNote.Date = note.Date; 
+            newNote.Date = note.Date;
             NoteTitle = note.Title;
             noteDescription = note.Description;
         }
@@ -33,9 +33,9 @@ namespace Diary.ViewModels
         public ICommand DelNoteCommand { get; }
 
         private string noteTitle;
-        public string NoteTitle 
-        { 
-            get=>noteTitle;
+        public string NoteTitle
+        {
+            get => noteTitle;
             set => SetProperty(ref noteTitle, value);
         }
         private string noteDescription;
@@ -45,20 +45,29 @@ namespace Diary.ViewModels
             set => SetProperty(ref noteDescription, value);
         }
 
-        private void Cancel()
+        private async Task Cancel()
         {
-            App.Current.MainPage = new NoteDescriptionPage(newNote);
+           await NavigationDispatcher.Instance.Navigation.PopAsync();
         }
-        private void Next()
+        private async Task Next()
         {
+            if (string.IsNullOrEmpty(NoteTitle))
+            { 
+                NavigationDispatcher.Instance.Navigation.ShowPopup(new TitleNotFilledPopup());
+                return;
+            }
             newNote.Title = noteTitle;
             newNote.Description = noteDescription;
-            App.Current.MainPage = new EditNoteTimePage(newNote,oldNote);
+            await NavigationDispatcher.Instance.Navigation.PushAsync(new EditNoteTimePage(newNote, oldNote));
         }
-        private void DeleteNote()
+        private async Task DeleteNote()
         {
-            NoteSerelizer.DeleteNote(oldNote);
-            App.Current.MainPage = new PlanerPage();
+            bool? answer = (bool)await NavigationDispatcher.Instance.Navigation.ShowPopupAsync(new DeleteConfirmationPopup());
+            if (answer is true)
+            {
+                NoteSerelizer.DeleteNote(oldNote);
+                await NavigationDispatcher.Instance.Navigation.PopToRootAsync();
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using Diary.Services;
 using Diary.Views;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,8 +12,8 @@ namespace Diary.ViewModels
     {
         public NewNoteTimeViewModel(Note note)
         {
-            SaveNoteCommand = new Command(SaveNote);
-            ReturnCommand = new Command(Return);
+            SaveNoteCommand = new Command(()=>SaveNote());
+            ReturnCommand = new Command(()=>Return());
 
             NewNote = note;
             SelectedTime = DateTime.Now.TimeOfDay;
@@ -38,17 +39,17 @@ namespace Diary.ViewModels
             set => SetProperty(ref selectedDate, value);
         }
 
-        public void SaveNote()
+        public async Task SaveNote()
         {
             NewNote.Date = SelectedDate.Add(SelectedTime);
             NewNote.Time = $"{selectedTime.Hours}:{selectedTime.Minutes}";
             NoteSerelizer.SerelizeNote(NewNote);
-            App.Current.MainPage = new PlanerPage();
+            await NavigationDispatcher.Instance.Navigation.PopToRootAsync();
         }
 
-        public void Return()
+        public async Task Return()
         {
-            App.Current.MainPage = new NewNoteInfoPage(NewNote.Date);
+            await NavigationDispatcher.Instance.Navigation.PopAsync();
         }
     }
 }

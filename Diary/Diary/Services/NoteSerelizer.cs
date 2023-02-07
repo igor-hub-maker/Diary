@@ -24,7 +24,7 @@ namespace Diary.Services
             return res;
         }
 
-        public static void SerelizeNote( Note newNote)
+        public static void SerelizeNote(Note newNote)
         {
             string fileName = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "/" + newNote.Date.ToShortDateString() + ".json";
             var notes = new List<Note>();

@@ -10,6 +10,7 @@ namespace Diary.Views
         public ToDoPage(DateTime date)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this,false);
             BindingContext = new ToDoViewModel(date);
         }
     }

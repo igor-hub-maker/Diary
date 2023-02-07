@@ -1,4 +1,5 @@
-﻿using Diary.ViewModels;
+﻿using Diary.Services;
+using Diary.ViewModels;
 using Xamarin.Forms;
 
 namespace Diary.Views
@@ -8,6 +9,7 @@ namespace Diary.Views
         public PlanerPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new PlanerViewModel();
         }
     }

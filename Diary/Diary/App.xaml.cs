@@ -1,4 +1,5 @@
 ﻿using Diary.Views;
+using Diary.Services;
 using Xamarin.Forms;
 
 namespace Diary
@@ -9,8 +10,8 @@ namespace Diary
         public App()
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new PlanerPage());
+            NavigationDispatcher.Instance.Initialize(MainPage.Navigation);
         }
 
         protected override void OnStart()

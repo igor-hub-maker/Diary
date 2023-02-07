@@ -3,6 +3,7 @@ using Diary.Services;
 using Diary.Views;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -12,9 +13,9 @@ namespace Diary.ViewModels
     {
         public ToDoViewModel(DateTime date)
         {
-            //NoteSelectedCommand = new Command(NoteSelected);
-            NewNoteCommand = new Command(NewNote);
-            OpenPlanerPageCommand = new Command(OpenPlanerPage);
+            NewNoteCommand = new Command(() => NewNote());
+            OpenPlanerPageCommand = new Command(() => OpenPlanerPage());
+            NoteTapped = new Command(() => NoteSelected());
             PageDate = date;
             PageTitle = $"{PageDate.Day} // {PageDate.Month}";
             WeekDay = PageDate.DayOfWeek.ToString();
@@ -23,22 +24,15 @@ namespace Diary.ViewModels
 
         private DateTime PageDate;
 
-        public ICommand NoteSelectedCommand { get; }
         public ICommand OpenPlanerPageCommand { get; }
         public ICommand NewNoteCommand { get; }
+        public ICommand NoteTapped { get; }
 
         private Note selectedNote;
         public Note SelectedNote
         {
             get => selectedNote;
-            set
-            {
-                if (value != null)
-                {
-                    SetProperty(ref selectedNote,value);
-                    NoteSelected();
-                }
-            }
+            set => SetProperty(ref selectedNote, value);
         }
         private List<Note> notes;
         public List<Note> Notes
@@ -68,18 +62,18 @@ namespace Diary.ViewModels
             }
         }
 
-        public void NoteSelected()
+        public async Task NoteSelected()
         {
-            App.Current.MainPage = new NoteDescriptionPage(SelectedNote);
+            await NavigationDispatcher.Instance.Navigation.PushAsync(new NoteDescriptionPage(SelectedNote));
         }
-        public void OpenPlanerPage()
+        public async Task OpenPlanerPage()
         {
-            App.Current.MainPage = new PlanerPage();
+            await NavigationDispatcher.Instance.Navigation.PopAsync();
         }
 
-        public void NewNote()
+        public async Task NewNote()
         {
-            App.Current.MainPage = new NewNoteInfoPage(PageDate);
+            await NavigationDispatcher.Instance.Navigation.PushAsync(new NewNoteInfoPage(PageDate));
         }
     }
 }

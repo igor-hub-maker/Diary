@@ -10,6 +10,7 @@ namespace Diary.Views
         public NewNoteInfoPage(DateTime date)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new NewNoteInfoViewModel(date);
         }
     }

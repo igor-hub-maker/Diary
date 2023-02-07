@@ -1,20 +1,19 @@
 ﻿using Diary.Models;
-using Diary.Views;
 using Diary.Services;
+using Diary.Views;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Diary.ViewModels
 {
-    public class EditNoteTimeViewModel:BaseViewModel
+    public class EditNoteTimeViewModel : BaseViewModel
     {
         public EditNoteTimeViewModel(Note newNote, Note oldNote)
         {
-            SaveNoteCommand = new Command(SaveNote);
-            ReturnCommand = new Command(Return);
+            SaveNoteCommand = new Command(()=>SaveNote());
+            ReturnCommand = new Command(() => Return());
 
             this.newNote = newNote;
             this.oldNote = oldNote;
@@ -41,16 +40,16 @@ namespace Diary.ViewModels
             set => SetProperty(ref selectedDate, value);
         }
 
-        private void SaveNote()
+        private async Task SaveNote()
         {
             newNote.Date = selectedDate;
             newNote.Time = $"{selectedTime.Hours}:{selectedTime.Minutes}";
-            NoteSerelizer.EditNote(newNote,oldNote);
-            App.Current.MainPage = new PlanerPage();
+            NoteSerelizer.EditNote(newNote, oldNote);
+            await NavigationDispatcher.Instance.Navigation.PopToRootAsync();
         }
-        private void Return()
+        private async Task Return()
         {
-            App.Current.MainPage = new EditNoteInfoPage(newNote);
+            await NavigationDispatcher.Instance.Navigation.PopAsync();
         }
     }
 }

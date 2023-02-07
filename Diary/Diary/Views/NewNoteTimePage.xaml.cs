@@ -10,6 +10,7 @@ namespace Diary.Views
         public NewNoteTimePage(Note task)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new NewNoteTimeViewModel(task);
         }
     }

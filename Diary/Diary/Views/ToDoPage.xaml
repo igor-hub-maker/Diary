@@ -2,7 +2,8 @@
 <ContentPage
     x:Class="Diary.Views.ToDoPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
     <StackLayout BackgroundColor="#1B1B1B">
         <Label
             Margin="36,34,0,21"
@@ -27,6 +28,9 @@
                     RowHeight="80"
                     SelectedItem="{Binding SelectedNote}"
                     SelectionMode="Single">
+                    <ListView.Behaviors>
+                        <xct:EventToCommandBehavior Command="{Binding NoteTapped}" EventName="ItemTapped" />
+                    </ListView.Behaviors>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

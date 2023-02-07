@@ -1,10 +1,5 @@
 ﻿using Diary.Models;
 using Diary.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,6 +12,7 @@ namespace Diary.Views
         public EditNoteTimePage(Note newNote, Note oldNote)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new EditNoteTimeViewModel(newNote, oldNote);
         }
     }

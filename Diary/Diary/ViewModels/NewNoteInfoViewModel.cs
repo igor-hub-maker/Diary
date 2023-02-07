@@ -1,8 +1,11 @@
 ﻿using Diary.Models;
 using Diary.Views;
+using Diary.Services;
 using System;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace Diary.ViewModels
 {
@@ -12,12 +15,12 @@ namespace Diary.ViewModels
 
         public NewNoteInfoViewModel(DateTime date)
         {
-            NewTaskContinueCommand = new Command(NewNoteContinue);
-            OpenToDoPageCommand = new Command(OpenToDoPage);
+            NewTaskContinueCommand = new Command(()=>NewNoteContinue());
+            CancelCommand = new Command(()=>Cancel());
             taskDate = date;
         }
 
-        public ICommand OpenToDoPageCommand { get; }
+        public ICommand CancelCommand { get; }
         public ICommand NewTaskContinueCommand { get; }
 
         private string noteTitle;
@@ -42,18 +45,25 @@ namespace Diary.ViewModels
             }
         }
 
-        public void OpenToDoPage()
+        public async Task Cancel()
         {
-            App.Current.MainPage = new ToDoPage(taskDate);
+            await NavigationDispatcher.Instance.Navigation.PopAsync();
         }
 
-        public void NewNoteContinue()
+        public async void NewNoteContinue()
         {
-            Note note = new Note();
-            note.Date = taskDate;
-            note.Title = NoteTitle;
-            note.Description = NoteDescription;
-            App.Current.MainPage = new NewNoteTimePage(note);
+            if (string.IsNullOrEmpty(noteTitle))
+            {
+                 NavigationDispatcher.Instance.Navigation.ShowPopup(new TitleNotFilledPopup());
+            }
+            else
+            {
+                Note note = new Note();
+                note.Date = taskDate;
+                note.Title = NoteTitle;
+                note.Description = NoteDescription;
+                await NavigationDispatcher.Instance.Navigation.PushAsync(new NewNoteTimePage(note));
+            }
         }
     }
 }
