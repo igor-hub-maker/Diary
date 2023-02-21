@@ -59,7 +59,7 @@
                             <Editor
                                 FontSize="14"
                                 Keyboard="Text"
-                                Placeholder="Enter here..."
+                                Placeholder="Enter here... (optional)"
                                 Text="{Binding NoteDescription}" />
                         </Frame>
                     </StackLayout>

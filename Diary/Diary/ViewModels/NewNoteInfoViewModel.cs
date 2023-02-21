@@ -1,11 +1,11 @@
 ﻿using Diary.Models;
-using Diary.Views;
 using Diary.Services;
+using Diary.Views;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.Extensions;
-using Xamarin.Forms;
-using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace Diary.ViewModels
 {
@@ -15,8 +15,8 @@ namespace Diary.ViewModels
 
         public NewNoteInfoViewModel(DateTime date)
         {
-            NewTaskContinueCommand = new Command(()=>NewNoteContinue());
-            CancelCommand = new Command(()=>Cancel());
+            NewTaskContinueCommand = new AsyncCommand(NewNoteContinue);
+            CancelCommand = new AsyncCommand(Cancel);
             taskDate = date;
         }
 
@@ -50,11 +50,11 @@ namespace Diary.ViewModels
             await NavigationDispatcher.Instance.Navigation.PopAsync();
         }
 
-        public async void NewNoteContinue()
+        public async Task NewNoteContinue()
         {
             if (string.IsNullOrEmpty(noteTitle))
             {
-                 NavigationDispatcher.Instance.Navigation.ShowPopup(new TitleNotFilledPopup());
+                NavigationDispatcher.Instance.Navigation.ShowPopup(new TitleNotFilledPopup());
             }
             else
             {

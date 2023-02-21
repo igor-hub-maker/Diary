@@ -1,10 +1,10 @@
 ﻿using Diary.Models;
 using Diary.Services;
 using Diary.Views;
-using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace Diary.ViewModels
@@ -13,20 +13,16 @@ namespace Diary.ViewModels
     {
         public EditNoteInfoViewModel(Note note)
         {
-            CancelCommand = new Command(()=>Cancel());
-            NextCommand = new Command(()=>Next());
-            DelNoteCommand = new Command(()=>DeleteNote());
+            CancelCommand = new AsyncCommand(Cancel);
+            NextCommand = new AsyncCommand(Next);
+            DelNoteCommand = new AsyncCommand(DeleteNote);
 
-            oldNote = note;
-            newNote = new Note();
-            newNote.Time = note.Time;
-            newNote.Date = note.Date;
+            Note = note;
             NoteTitle = note.Title;
-            noteDescription = note.Description;
+            NoteDescription = note.Description;
         }
 
-        private Note newNote;
-        private Note oldNote;
+        private Note Note;
 
         public ICommand CancelCommand { get; }
         public ICommand NextCommand { get; }
@@ -47,25 +43,25 @@ namespace Diary.ViewModels
 
         private async Task Cancel()
         {
-           await NavigationDispatcher.Instance.Navigation.PopAsync();
+            await NavigationDispatcher.Instance.Navigation.PopAsync();
         }
         private async Task Next()
         {
             if (string.IsNullOrEmpty(NoteTitle))
-            { 
+            {
                 NavigationDispatcher.Instance.Navigation.ShowPopup(new TitleNotFilledPopup());
                 return;
             }
-            newNote.Title = noteTitle;
-            newNote.Description = noteDescription;
-            await NavigationDispatcher.Instance.Navigation.PushAsync(new EditNoteTimePage(newNote, oldNote));
+            Note.Title = noteTitle;
+            Note.Description = noteDescription;
+            await NavigationDispatcher.Instance.Navigation.PushAsync(new EditNoteTimePage(Note));
         }
         private async Task DeleteNote()
         {
             bool? answer = (bool)await NavigationDispatcher.Instance.Navigation.ShowPopupAsync(new DeleteConfirmationPopup());
             if (answer is true)
             {
-                NoteSerelizer.DeleteNote(oldNote);
+                await DependencyService.Get<INotesDispatcher>().DeleteNote(Note);
                 await NavigationDispatcher.Instance.Navigation.PopToRootAsync();
             }
         }

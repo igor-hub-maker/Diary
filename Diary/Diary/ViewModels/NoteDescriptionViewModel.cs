@@ -3,7 +3,7 @@ using Diary.Services;
 using Diary.Views;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace Diary.ViewModels
 {
@@ -11,8 +11,8 @@ namespace Diary.ViewModels
     {
         public NoteDescriptionViewModel(Note note)
         {
-            EditNoteCommand = new Command(()=>EditNote());
-            GoBackCommand = new Command(()=>GoBack());
+            EditNoteCommand = new AsyncCommand(EditNote);
+            GoBackCommand = new AsyncCommand(GoBack);
 
             NoteTitle = note.Title;
             Time = note.Time;

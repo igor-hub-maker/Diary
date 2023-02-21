@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Diary.Views.WelcomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#1B1B1B">
+            <StackLayout>
+                <Label
+                    Margin="0,90,0,0"
+                    FontFamily="MontserratBold"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="//"
+                    TextColor="#9CABC8" />
+                <Label
+                    Margin="0"
+                    FontFamily="MontserratBold"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="Hello!"
+                    TextColor="#9CABC8" />
+                <Label
+                    Margin="100,5"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text=" Choose what suits you!" />
+                <Button
+                    Margin="55,40,55,20"
+                    BackgroundColor="#9CABC8"
+                    Command="{Binding LoginCommand}"
+                    CornerRadius="36"
+                    FontSize="20"
+                    HeightRequest="70"
+                    Text="Login"
+                    TextTransform="None" />
+                <Button
+                    Margin="55,0"
+                    BackgroundColor="#9CABC8"
+                    Command="{Binding RegisterCommand}"
+                    CornerRadius="36"
+                    FontSize="20"
+                    HeightRequest="70"
+                    Text="Register"
+                    TextTransform="None" />
+            </StackLayout>
+            <Button
+                Margin="15"
+                Command="{Binding ContinueAsGuestCommand}"
+                CornerRadius="25"
+                HorizontalOptions="Center"
+                Text="Guest"
+                TextTransform="None"
+                VerticalOptions="End" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

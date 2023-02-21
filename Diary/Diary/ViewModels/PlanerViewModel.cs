@@ -4,6 +4,7 @@ using System;
 using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace Diary.ViewModels
@@ -14,14 +15,14 @@ namespace Diary.ViewModels
         {
             Culture = CultureInfo.GetCultureInfoByIetfLanguageTag("en-GB");
             Mounth = DateTime.Now.Month;
-            SelectedDateCommand = new Command(() => DateSelected());
-            OpenToDoPageCommand = new Command(() => OpenToDoPage());
-            FocusedCommand = new Command(Focused);
+            SelectedDateCommand = new AsyncCommand(DateSelected);
+            OpenToDoPageCommand = new AsyncCommand(OpenToDoPage);
+            AppearingCommand = new AsyncCommand(Appearing);
         }
 
         public ICommand SelectedDateCommand { get; }
         public ICommand OpenToDoPageCommand { get; }
-        public ICommand FocusedCommand { get; }
+        public ICommand AppearingCommand { get; }
 
         private int todayNotesCount;
         public int TodayNotesCount
@@ -65,7 +66,7 @@ namespace Diary.ViewModels
 
         private async Task OpenToDoPage()
         {
-            await NavigationDispatcher.Instance.Navigation.PushAsync(new ToDoPage(DateTime.Today),true);
+            await NavigationDispatcher.Instance.Navigation.PushAsync(new ToDoPage(DateTime.Today), true);
         }
         private void SetMounth(int value)
         {
@@ -73,9 +74,9 @@ namespace Diary.ViewModels
             var name = Culture.DateTimeFormat.GetMonthName(Mounth);
             PageTitle = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(name);
         }
-        public void Focused()
+        public async Task Appearing()
         {
-            TodayNotesCount = NoteSerelizer.GetTodayNotesCount();
+            TodayNotesCount = await DependencyService.Get<INotesDispatcher>().GetNotesCount(DateTime.Today);
         }
     }
 }
