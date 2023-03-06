@@ -1,5 +1,6 @@
 ﻿using Diary.Models;
 using Diary.Services;
+using Diary.Services.Interfaces;
 using Diary.Views;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -40,6 +41,7 @@ namespace Diary.ViewModels
         }
         private async Task Enter()
         {
+            var userAunth = new UserAunth();
             var result = new User();
             var emailAttribute = new EmailAddressAttribute();
             try
@@ -55,7 +57,7 @@ namespace Diary.ViewModels
                     return;
                 }
                 User user = new User() { Login = UserLogin.TrimEnd(), Password = UserPassword };
-                result = await UserAunth.LoginUser(user);
+                result = await userAunth.LoginUser(user);
             }
             catch (Exception ex)
             {
@@ -66,6 +68,7 @@ namespace Diary.ViewModels
             if (!(result is null))
             {
                 LocalUserInfoService.SaveUserInfo(result);
+                DependencyService.Get<INotesDispatcher>().SaveToLocalNotes();
                 App.Current.MainPage = new NavigationPage(new PlanerPage());
                 NavigationDispatcher.Instance.Initialize(App.Current.MainPage.Navigation);
             }

@@ -1,5 +1,6 @@
 ﻿using Diary.Models;
 using Diary.Services;
+using Diary.Services.Interfaces;
 using Diary.Views;
 using System.Threading.Tasks;
 using System.Windows.Input;

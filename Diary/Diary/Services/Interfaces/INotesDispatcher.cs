@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Diary.Services
+namespace Diary.Services.Interfaces
 {
     public interface INotesDispatcher
     {
@@ -12,5 +12,8 @@ namespace Diary.Services
         public Task DeleteNote(Note note);
         public Task EditNote(Note note);
         public Task<int> GetNotesCount(DateTime date);
+        public Task SaveToLocalNotes();
+        public Task UploadFromLocalNotes();
+        public bool IsInternetConectionEnable();
     }
 }

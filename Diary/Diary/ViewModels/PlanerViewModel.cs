@@ -1,4 +1,5 @@
 ﻿using Diary.Services;
+using Diary.Services.Interfaces;
 using Diary.Views;
 using System;
 using System.Globalization;

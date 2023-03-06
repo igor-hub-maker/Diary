@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace Diary.Services
 {
-    public static class UserAunth
+    public class UserAunth
     {
-        private static IUserFirebaseApi restService = RestService.For<IUserFirebaseApi>("https://diary-c636d-default-rtdb.europe-west1.firebasedatabase.app");
+        private IUserFirebaseApi restService = RestService.For<IUserFirebaseApi>("https://diary-c636d-default-rtdb.europe-west1.firebasedatabase.app");
 
-        public static async Task<User> LoginUser(User localUser)
+        public async Task<User> LoginUser(User localUser)
         {
             var users = await restService.GetUsers();
             if (!(users is null))
@@ -25,7 +25,7 @@ namespace Diary.Services
             throw new Exception("Email or password is incorrect.");
         }
 
-        public static async Task RegisterUser(User localUser)
+        public async Task RegisterUser(User localUser)
         {
             var users = await restService.GetUsers();
             if (users is null)

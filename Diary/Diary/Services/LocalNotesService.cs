@@ -1,4 +1,5 @@
 ﻿using Diary.Models;
+using Diary.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,11 +9,15 @@ using System.Threading.Tasks;
 
 namespace Diary.Services
 {
-    public class LocalNotesDispatcherService : INotesDispatcher
+    public class LocalNotesService
     {
         public async Task DeleteNote(Note note)
         {
             var notes = await GetNotes(note.Date);
+            if (notes is null)
+            {
+                return;
+            }
             notes.RemoveAt(note.Id);
             SerializeNotes(note.Date, notes);
         }
@@ -20,6 +25,10 @@ namespace Diary.Services
         public async Task EditNote(Note note)
         {
             var notes = await GetNotes(note.Date);
+            if (notes is null)
+            {
+                return;
+            }
             notes[note.Id] = note;
             SerializeNotes(note.Date, notes);
         }

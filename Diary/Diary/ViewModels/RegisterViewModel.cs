@@ -39,6 +39,7 @@ namespace Diary.ViewModels
         }
         private async Task Enter()
         {
+            var userAunth = new UserAunth();
             var emailAttribute = new EmailAddressAttribute();
             try
             {
@@ -61,7 +62,7 @@ namespace Diary.ViewModels
             var user = new User() { Login = UserLogin.TrimEnd(), Password = UserPassword };
             try
             {
-                await UserAunth.RegisterUser(user);
+                await userAunth.RegisterUser(user);
             }
             catch (Exception ex)
             {

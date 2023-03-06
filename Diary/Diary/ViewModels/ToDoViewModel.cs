@@ -1,5 +1,6 @@
 ﻿using Diary.Models;
 using Diary.Services;
+using Diary.Services.Interfaces;
 using Diary.Views;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,11 @@ namespace Diary.ViewModels
         {
             NewNoteCommand = new AsyncCommand(NewNote);
             OpenPlanerPageCommand = new AsyncCommand(OpenPlanerPage);
+            OnApperingCommand = new AsyncCommand(OnAppering);
             NoteTapped = new AsyncCommand(NoteSelected);
             PageDate = date;
             PageTitle = $"{PageDate.Day} // {PageDate.Month}";
             WeekDay = PageDate.DayOfWeek.ToString();
-            OnApperingCommand = new AsyncCommand(OnAppering);
         }
 
         private DateTime PageDate;
