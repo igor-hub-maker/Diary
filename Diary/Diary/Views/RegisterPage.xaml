@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Diary.Views.EditNoteInfoPage"
+    x:Class="Diary.Views.RegisterPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     NavigationPage.HasNavigationBar="False">
@@ -10,7 +10,7 @@
                 Margin="36,34,0,21"
                 FontFamily="MontserratBold"
                 FontSize="32"
-                Text="Edit Task"
+                Text="Register"
                 TextColor="#9CABC8" />
             <Frame
                 Margin="20,0,20,10"
@@ -30,7 +30,7 @@
                             <Label
                                 FontSize="20"
                                 HorizontalOptions="Center"
-                                Text="Title:" />
+                                Text="Login:" />
                             <Frame
                                 Margin="9,30"
                                 Padding="4,0"
@@ -41,35 +41,27 @@
                                 VerticalOptions="Start">
                                 <Entry
                                     FontSize="14"
-                                    MaxLength="13"
                                     Placeholder="Enter here..."
-                                    Text="{Binding NoteTitle}" />
+                                    Text="{Binding UserLogin}" />
                             </Frame>
                             <Label
                                 Margin="0,75"
                                 FontSize="20"
                                 HorizontalOptions="Center"
-                                Text="Description:" />
+                                Text="Password:" />
                             <Frame
                                 Margin="9,110,9,0"
                                 Padding="10,0"
                                 BackgroundColor="#434650"
                                 CornerRadius="36"
                                 IsClippedToBounds="true"
-                                VerticalOptions="FillAndExpand">
-                                <Editor
+                                VerticalOptions="Start">
+                                <Entry
                                     FontSize="14"
-                                    Keyboard="Text"
-                                    Placeholder="Enter here... (optional)"
-                                    Text="{Binding NoteDescription}" />
+                                    IsPassword="True"
+                                    Placeholder="Enter here..."
+                                    Text="{Binding UserPassword}" />
                             </Frame>
-                            <ImageButton
-                                Margin="0"
-                                BackgroundColor="Transparent"
-                                Command="{Binding DelNoteCommand}"
-                                HorizontalOptions="End"
-                                Source="DelButton.png"
-                                VerticalOptions="End" />
                         </Grid>
                     </Frame>
                 </StackLayout>
@@ -83,12 +75,12 @@
                         Margin="35,0"
                         Padding="0,0,0,1"
                         BackgroundColor="#9CABC8"
-                        Command="{Binding CancelCommand}"
+                        Command="{Binding ReturnCommand}"
                         CornerRadius="25"
                         FontSize="20"
                         HeightRequest="37"
                         HorizontalOptions="Start"
-                        Text="Cancel"
+                        Text="Return"
                         TextColor="#FFFFFF"
                         TextTransform="None"
                         VerticalOptions="Center"
@@ -97,12 +89,12 @@
                         Margin="35,0"
                         Padding="0,0,0,1"
                         BackgroundColor="#9CABC8"
-                        Command="{Binding NextCommand}"
+                        Command="{Binding EnterCommand}"
                         CornerRadius="25"
                         FontSize="20"
                         HeightRequest="37"
                         HorizontalOptions="End"
-                        Text="Next"
+                        Text="Enter"
                         TextColor="#FFFFFF"
                         TextTransform="None"
                         VerticalOptions="Center"

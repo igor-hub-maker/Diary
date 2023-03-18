@@ -9,11 +9,11 @@ namespace Diary.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditNoteTimePage : ContentPage
     {
-        public EditNoteTimePage(Note newNote, Note oldNote)
+        public EditNoteTimePage(Note newNote)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            BindingContext = new EditNoteTimeViewModel(newNote, oldNote);
+            BindingContext = new EditNoteTimeViewModel(newNote);
         }
     }
 }

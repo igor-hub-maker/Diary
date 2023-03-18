@@ -7,7 +7,7 @@
     xmlns:controls="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
     <ContentPage.Behaviors>
-        <xct:EventToCommandBehavior Command="{Binding FocusedCommand}" EventName="Appearing" />
+        <xct:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#1B1B1B">
@@ -35,6 +35,7 @@
                         HeaderSectionVisible="False"
                         Month="{Binding Mounth}"
                         SelectedDate="{Binding SelectedDate}"
+                        SelectedDayBackgroundColor="Transparent"
                         SwipeUpToHideEnabled="False"
                         TodayFillColor="#FFFFFF"
                         TodayOutlineColor="#FFFFFF"

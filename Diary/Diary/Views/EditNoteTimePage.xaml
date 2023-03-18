@@ -41,18 +41,6 @@
                                 HeightRequest="40">
                                 <TimePicker Time="{Binding SelectedTime}" />
                             </Frame>
-                            <Label
-                                FontSize="20"
-                                HorizontalOptions="Center"
-                                Text="Date" />
-                            <Frame
-                                Margin="8,0"
-                                Padding="6,0,6,0"
-                                BackgroundColor="#434650"
-                                CornerRadius="36"
-                                HeightRequest="40">
-                                <DatePicker Date="{Binding SelectedDate}" />
-                            </Frame>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

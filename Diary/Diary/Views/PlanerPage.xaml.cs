@@ -1,5 +1,4 @@
-﻿using Diary.Services;
-using Diary.ViewModels;
+﻿using Diary.ViewModels;
 using Xamarin.Forms;
 
 namespace Diary.Views

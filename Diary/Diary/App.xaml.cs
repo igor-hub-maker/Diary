@@ -1,5 +1,12 @@
-﻿using Diary.Views;
+﻿using Diary.Models;
 using Diary.Services;
+using Diary.Services.Interfaces;
+using Diary.Views;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Diary
@@ -9,9 +16,10 @@ namespace Diary
 
         public App()
         {
+            LocalUserInfoService.GetUserInfo();
+            DependencyService.RegisterSingleton<INotesDispatcher>(new NotesDispatcher());
             InitializeComponent();
-            MainPage = new NavigationPage(new PlanerPage());
-            NavigationDispatcher.Instance.Initialize(MainPage.Navigation);
+            MainPage = new NavigationPage( new StartPage());
         }
 
         protected override void OnStart()
@@ -25,5 +33,6 @@ namespace Diary
         protected override void OnResume()
         {
         }
+       
     }
 }
