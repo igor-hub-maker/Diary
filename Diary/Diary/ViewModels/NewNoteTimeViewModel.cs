@@ -40,7 +40,7 @@ namespace Diary.ViewModels
             set => SetProperty(ref selectedDate, value);
         }
 
-        public async Task SaveNote()
+        private async Task SaveNote()
         {
             NewNote.Date = SelectedDate.Add(SelectedTime);
             NewNote.Time = NewNote.Date.ToShortTimeString();
@@ -48,7 +48,7 @@ namespace Diary.ViewModels
             await NavigationDispatcher.Instance.Navigation.PopToRootAsync();
         }
 
-        public async Task Return()
+        private async Task Return()
         {
             await NavigationDispatcher.Instance.Navigation.PopAsync();
         }

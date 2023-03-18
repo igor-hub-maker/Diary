@@ -75,7 +75,7 @@ namespace Diary.ViewModels
             var name = Culture.DateTimeFormat.GetMonthName(Mounth);
             PageTitle = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(name);
         }
-        public async Task Appearing()
+        private async Task Appearing()
         {
             TodayNotesCount = await DependencyService.Get<INotesDispatcher>().GetNotesCount(DateTime.Today);
         }

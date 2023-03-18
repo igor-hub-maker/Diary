@@ -69,16 +69,16 @@ namespace Diary.ViewModels
         {
             Notes = await DependencyService.Get<INotesDispatcher>().GetNotes(PageDate);
         }
-        public async Task NoteSelected()
+        private async Task NoteSelected()
         {
             await NavigationDispatcher.Instance.Navigation.PushAsync(new NoteDescriptionPage(SelectedNote));
         }
-        public async Task OpenPlanerPage()
+        private async Task OpenPlanerPage()
         {
             await NavigationDispatcher.Instance.Navigation.PopAsync();
         }
 
-        public async Task NewNote()
+        private async Task NewNote()
         {
             await NavigationDispatcher.Instance.Navigation.PushAsync(new NewNoteInfoPage(PageDate));
         }

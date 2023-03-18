@@ -45,12 +45,12 @@ namespace Diary.ViewModels
             }
         }
 
-        public async Task Cancel()
+        private async Task Cancel()
         {
             await NavigationDispatcher.Instance.Navigation.PopAsync();
         }
 
-        public async Task NewNoteContinue()
+        private async Task NewNoteContinue()
         {
             if (string.IsNullOrEmpty(noteTitle))
             {
