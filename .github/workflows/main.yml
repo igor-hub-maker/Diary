@@ -1,0 +1,20 @@
+name: CI on Push and Pull Request
+
+on: [push, pull_request]
+
+jobs:
+
+  Android:
+
+    runs-on: macos-latest
+    
+    steps:
+
+    - uses: actions/checkout@v1
+      
+    - name: Android
+      run: |
+        cd Diary/Diary
+        nuget restore
+        cd Diary/Diary.Android
+        msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
