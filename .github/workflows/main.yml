@@ -14,7 +14,7 @@ jobs:
       
     - name: Android
       run: |
-        cd Diary/Diary
+        cd Diary
         nuget restore
-        cd Diary/Diary.Android
+        cd Diary.Android
         msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
