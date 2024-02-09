@@ -1,20 +1,16 @@
-name: CI on Push and Pull Request
-
-on: [push, pull_request]
-
-jobs:
-
-  Android:
-
-    runs-on: macos-latest
-    
-    steps:
-
-    - uses: actions/checkout@v1
-      
-    - name: Android
-      run: |
-        cd Diary
-        nuget restore
-        cd Diary.Android
-        msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+            - name: Setup Xamarin
+  # You may pin to the exact commit or the version.
+  # uses: maxim-lobanov/setup-xamarin@00b44a3ef9e2d1953010956de2022e8d095a196c
+  uses: maxim-lobanov/setup-xamarin@v1.2.1
+  with:
+    # Version of Mono to select
+    mono-version: # optional
+    # Version of Xamarin.iOS to select
+    xamarin-ios-version: # optional
+    # Version of Xamarin.Mac to select
+    xamarin-mac-version: # optional
+    # Version of Xamarin.Android to select
+    xamarin-android-version: # optional
+    # Version of Xcode to use with Xamarin.iOS and Xamarin.Mac
+    xcode-version: # optional
+          
